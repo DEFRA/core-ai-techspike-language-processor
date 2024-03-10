@@ -1,9 +1,9 @@
 environment: production
 environmentCode:
-name: ffc-template-node
-namespace: ffc-demo
-workstream: ffc-demo
-image: ffc-template-node
+name: core-ai-techspike-language-processor
+namespace: core-ai
+workstream: core-ai
+image: core-ai-techspike-language-processor
 
 labels:
   component: service
@@ -12,10 +12,10 @@ appInsights:
   connectionString:
 
 containerConfigMap:
-  name: ffc-template-node-config-map
+  name: core-ai-techspike-language-processor-config-map
 
 containerSecret:
-  name: ffc-template-node-container-secret
+  name: core-ai-techspike-language-processor-container-secret
   type: Opaque
 
 deployment: {}

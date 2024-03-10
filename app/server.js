@@ -6,6 +6,10 @@ const server = Hapi.server({
 })
 
 const routes = [].concat(
+  require('./routes/conversation'),
+  require('./routes/summarisation'),
+  require('./routes/document'),
+  require('./routes/index-document'),
   require('./routes/healthy'),
   require('./routes/healthz')
 )

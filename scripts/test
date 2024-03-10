@@ -3,7 +3,7 @@
 set -e
 projectRoot="$(a="/$0"; a=${a%/*}; a=${a:-.}; a=${a#/}/; cd "$a/.." || return; pwd)"
 
-service="ffc-template-node"
+service="core-ai-techspike-language-processor"
 
 show_help() {
   echo "
@@ -40,31 +40,30 @@ done
 
 compose() {
   if [ "${watch}" = "true" ]; then
-    docker-compose -f docker-compose.yaml -f docker-compose.test.yaml -f docker-compose.test.watch.yaml -p "${service}-test" $@
+    docker-compose -f docker-compose.yaml -f docker-compose.test.yaml -f docker-compose.test.watch.yaml -p "${service}-test" "$@"
   elif [ "${debug}" = "true" ]; then
-    docker-compose -f docker-compose.yaml -f docker-compose.test.yaml -f docker-compose.test.watch.yaml -f docker-compose.test.debug.yaml -p "${service}-test" $@
+    docker-compose -f docker-compose.yaml -f docker-compose.test.yaml -f docker-compose.test.watch.yaml -f docker-compose.test.debug.yaml -p "${service}-test" "$@"
   else
-    docker-compose -f docker-compose.yaml -f docker-compose.test.yaml -p "${service}-test" $@
+    docker-compose -f docker-compose.yaml -f docker-compose.test.yaml -p "${service}-test" "$@"
   fi
 }
 
 (
   cd "${projectRoot}"
 
-  # Create test output folder
-  mkdir -p test-output
-
   # Guarantee clean environment
   compose down -v
+  docker-compose -f docker-compose.migrate.yaml -p "${service}-test" down -v
 
   # Ensure container images are up to date
   compose build
+  docker-compose -f docker-compose.migrate.yaml -p "${service}-test" run --rm database-up
 
   # Run tests
   if [ "${debug}" = "true" ]; then
     compose run --service-ports ${service} ${command}
   else
-    compose run --rm ${service} ${command}
+    compose run ${service} ${command}
   fi
 
   # Clean up

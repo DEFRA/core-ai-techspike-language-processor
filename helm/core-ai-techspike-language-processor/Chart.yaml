@@ -1,6 +1,6 @@
 apiVersion: v2
-description: description-of-project-goes-here
-name: ffc-template-node
+description: API for management of LLM calls and vector
+name: core-ai-techspike-language-processor
 # this version is automatically updated in the build pipeline
 version: 1.0.0
 dependencies:

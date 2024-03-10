@@ -1,8 +1,8 @@
 {
-  "name": "ffc-template-node",
+  "name": "core-ai-techspike-language-processor",
   "version": "0.1.0",
-  "description": "description-of-project-goes-here",
-  "homepage": "https://github.com/DEFRA/ffc-template-node",
+  "description": "API for management of LLM calls and vector",
+  "homepage": "https://github.com/DEFRA/core-ai-techspike-language-processor",
   "main": "app/index.js",
   "scripts": {
     "pretest": "npm run test:lint",
@@ -17,8 +17,21 @@
   "contributors": [],
   "license": "OGL-UK-3.0",
   "dependencies": {
+    "@azure/identity": "^4.0.1",
+    "@azure/storage-blob": "^12.13.0",
     "@hapi/hapi": "21.3.2",
-    "applicationinsights": "2.9.1"
+    "@hapi/inert": "^7.1.0",
+    "@hapi/vision": "^7.0.3",
+    "@langchain/anthropic": "^0.1.5",
+    "@langchain/community": "^0.0.35",
+    "@langchain/openai": "^0.0.18",
+    "applicationinsights": "2.9.1",
+    "cheerio": "^1.0.0-rc.12",
+    "hapi-swagger": "^17.2.1",
+    "joi": "^17.12.2",
+    "langchain": "^0.1.25",
+    "mammoth": "^1.7.0",
+    "pg": "^8.11.3"
   },
   "devDependencies": {
     "jest": "29.7.0",

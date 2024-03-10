@@ -1,5 +1,5 @@
 services:
-  ffc-template-node:
+  core-ai-techspike-language-processor:
     command: >
       sh -c "npm run test:watch"
     volumes:

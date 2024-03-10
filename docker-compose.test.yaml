@@ -2,11 +2,11 @@
 # that test output is saved to the host
 
 services:
-  ffc-template-node:
+  core-ai-techspike-language-processor:
     build:
       target: development
-    image: ffc-template-node-development
-    container_name: ffc-template-node-test
+    image: core-ai-techspike-language-processor-development
+    container_name: core-ai-techspike-language-processor-test
     command: npm run test
     volumes:
       - ./app:/home/node/app

@@ -1,5 +1,5 @@
 services:
-  ffc-template-node:
+  core-ai-techspike-language-processor:
     command: npm run test:debug
     ports:
       - "9229:9229"

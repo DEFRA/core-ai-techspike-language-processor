@@ -1,0 +1,8 @@
+{{- include "ffc-helm-library.deployment" (list . "core-ai-techspike-language-processor.deployment") -}}
+{{- define "core-ai-techspike-language-processor.deployment" -}}
+spec:
+  template:
+    spec:
+      containers:
+      - {{ include "ffc-helm-library.container" (list . "core-ai-techspike-language-processor.container") }}
+{{- end -}}

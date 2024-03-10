@@ -2,14 +2,32 @@
 # to provide dependencies and expose ports for local testing
 
 services:
-  ffc-template-node:
+  core-ai-techspike-language-processor:
     build:
       target: development
-    image: ffc-template-node-development
-    container_name: ffc-template-node-development
+    image: core-ai-techspike-language-processor-development
+    container_name: core-ai-techspike-language-processor-development
     ports:
-      - "3000:3000"
-      - "9229:9229"
+      - "3001:3000"
+      - "9230:9229"
     volumes:
       - ./app:/home/node/app
       - ./package.json:/home/node/package.json
+
+  core-ai-techspike-language-processor-postgres:
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  core-ai-techspike-language-processor-azurite:
+    volumes:
+      - azurite_data:/data
+    ports:
+      - "10000:10000"
+      - "10001:10001"
+      - "10002:10002"
+
+volumes:
+  postgres_data:
+  azurite_data:
